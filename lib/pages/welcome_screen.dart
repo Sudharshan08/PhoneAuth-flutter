@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 
@@ -47,7 +48,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   width: double.infinity,
                   height: 50,
                   child: CustomButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                    },
                      text: "wellcome",
                       ),
                       ),

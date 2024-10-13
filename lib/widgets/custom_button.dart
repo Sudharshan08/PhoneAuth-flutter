@@ -10,9 +10,10 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed, 
       style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-           backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
-           shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)
+          // ignore: deprecated_member_use
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+           backgroundColor: WidgetStateProperty.all<Color>(Colors.purple),
+           shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)
            ),
            ),
       ),
