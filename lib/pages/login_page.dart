@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/auth_service.dart';
 import 'package:flutter_application_1/main_wrapper.dart';
-
+import 'package:dio/dio.dart';
+import 'package:flutter_application_1/pages/getapi.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                         Navigator.pop(context);
                                         Navigator.pushReplacement(
                                           context,MaterialPageRoute(
-                                            builder: (context)=> MainWrapper()
+                                            builder: (context)=>MainWrapper()
                                              ),
                                          );
                                       }

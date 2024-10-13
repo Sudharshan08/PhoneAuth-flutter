@@ -13,7 +13,7 @@ class _TicketPageState extends State<TicketPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Colors.white,
+        backgroundColor:Colors.blue,
         foregroundColor: Colors.white,
         title:const Text(""),
       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/main_wrapper_controller.dart';
+import 'package:flutter_application_1/pages/getapi.dart';
+import 'package:flutter_application_1/pages/settings_page.dart';
 
 import 'package:flutter_application_1/settings_screen/profile_screen.dart';
 import 'package:get/get.dart';
@@ -20,20 +22,21 @@ class MainWrapper extends StatelessWidget {
   @override
  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        elevation: 0,
-        title: Text("Raise your ticket",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-      ),
+      //appBar: AppBar(
+        //centerTitle: true,
+        //backgroundColor: Colors.blue,
+        //elevation: 0,
+       // title: Text("",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+       // ),
+      //),
       body:  PageView(
         controller: controller.pageController,
         physics: BouncingScrollPhysics(),
-          children:const [
-            HomeScreen(),
-            TicketPage(),
-            ProfileScreen(),
+          children:[
+             Getapi(),
+            const TicketPage(),
+            const ProfileScreen(),
+             const HomeScreen(),
           ],
         ),
       bottomNavigationBar: BottomAppBar(
@@ -61,6 +64,11 @@ class MainWrapper extends StatelessWidget {
                   icon: Iconsax.setting, 
                   page: 2, 
                   label: "Settings"),
+                   _bottomAppBarItem(
+                  context, 
+                  icon: Iconsax.setting, 
+                  page: 3, 
+                  label: "LogOut Page"),
               ],
             ),
           ),
