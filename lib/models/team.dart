@@ -11,6 +11,7 @@ class Team{
   final bool status;
   final Object stage;
   final int uniqueId;
+  final String description;
 
   Team({
     required this.id,
@@ -23,6 +24,7 @@ class Team{
            required this.status,
             required this.stage,
              required this.uniqueId,
+             required this.description,
   });
 
 
