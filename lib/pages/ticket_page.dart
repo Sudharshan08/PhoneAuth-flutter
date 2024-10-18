@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart'as http;
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/responsive.dart';
 
@@ -9,6 +12,49 @@ class TicketPage extends StatefulWidget {
 }
 
 class _TicketPageState extends State<TicketPage> {
+
+   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final _typeController = TextEditingController();
+  final _severityController = TextEditingController();
+
+
+   Future<void> _submitForm() async {
+
+   // if (_formKey.currentState!.validate()) {
+   print(_formKey.currentState);
+      print(_nameController.text);
+      print(_descriptionController.text);
+      print(_typeController.text);
+      print(_severityController.text);
+      final response = await http.post(
+        Uri.parse('https://hennagara-backend.onrender.com/tickets/create'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'name': _nameController.text,
+          'description': _descriptionController.text,
+          'type':_typeController.text,
+          'severity':_severityController.text,
+          'reportedBy': '672ehuey72y3'
+        }),
+      );
+      print(response);
+
+      if (response.statusCode == 201) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Data submitted successfully!')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to submit data')),
+        );
+      }
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,16 +93,57 @@ class _TicketPageState extends State<TicketPage> {
               ),
               child: Padding(padding: EdgeInsets.all(20),
               child: Column(children: [
-                contactFormField("Issue Type", 1, "Your issues..."),
-                contactFormField("Name", 1, "Your Name"),
-                contactFormField("Severity", 1, ""),
-                contactFormField("Description", 12,""),
+                //TextFormField("Issue Type", 1, "Your issues..."),
+                 TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(labelText: 'Name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+              ),
+               // contactFormField("Name", 1, "Your Name"),
+               // contactFormField("Severity", 1, ""),
+               // contactFormField("Description", 12,""),
+                TextFormField(
+                controller: _descriptionController,
+                decoration: InputDecoration(labelText: 'Description'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter description';
+                  }
+                  return null;
+                },
+              ),
+
+               TextFormField(
+                controller: _typeController,
+                decoration: InputDecoration(labelText: 'Type'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your Query';
+                  }
+                  return null;
+                },
+              ),
+               TextFormField(
+                controller: _severityController,
+                decoration: InputDecoration(labelText: 'severity'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'please Enter severity';
+                  }
+                  return null;
+                },
+              ),
                 Row(
                   children: [
                     Expanded(
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(backgroundColor: Colors.blue),
-                        onPressed: (){}, 
+                        onPressed: _submitForm,
                         child: Text("Submit", style: TextStyle(color: Colors.white),),
                     ),
                     ),

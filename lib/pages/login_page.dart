@@ -4,6 +4,7 @@ import 'package:flutter_application_1/main_wrapper.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/pages/getapi.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -28,14 +29,17 @@ class _LoginPageState extends State<LoginPage> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Expanded(child: Image.asset("assets/image2.png",fit: BoxFit.cover,),
+              Expanded(child: SvgPicture.asset("assets/Seal_of_Karnataka - Copy.svg",
+              //fit: BoxFit.cover
+              width: 400,
+              height: 600,),
               ),
               
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    const Text("Hi, wellcome back",
+                    const Text("Hi, welcome back",
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                     ),
                     const Text("Enter your phone number to continue"),
@@ -137,9 +141,9 @@ class _LoginPageState extends State<LoginPage> {
                          }
                          );
                     }
-                  }, child: Text("send otp"),
+                  }, child: Text("Send OTP"),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Colors.blue,
                     foregroundColor: Colors.black
                   ),
                   ),

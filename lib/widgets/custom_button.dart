@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
       style: ButtonStyle(
           // ignore: deprecated_member_use
           foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-           backgroundColor: WidgetStateProperty.all<Color>(Colors.purple),
+           backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
            shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)
            ),
            ),
